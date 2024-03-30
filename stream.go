@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 )
 
 type Stream struct {
@@ -29,7 +30,10 @@ func (s *Stream) RunCheck() {
 }
 
 // NewStream sets up a new Stream Struct
-func NewStream(title string, url string) Stream {
+func NewStream() Stream {
+	title := os.Getenv("VENDOR_NAME")
+	url := os.Getenv("STREAM_URL")
+
 	stream := Stream{
 		Title:       title,
 		Url:         url,

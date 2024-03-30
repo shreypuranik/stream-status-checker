@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/joho/godotenv"
-	"os"
 )
 
 func main() {
@@ -15,11 +14,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	vendorName := os.Getenv("VENDOR_NAME")
-	streamUrl := os.Getenv("STREAM_URL")
-
-	stream := NewStream(vendorName, streamUrl)
-
+	stream := NewStream()
 	stream.RunCheck()
 
 	marshalledStream, _ := json.Marshal(stream)
